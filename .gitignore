@@ -1,1 +1,3 @@
-/.venv
+.venv
+.vscode/*
+c-source/ellipsometer.dSYM/Contents/Info.plist
