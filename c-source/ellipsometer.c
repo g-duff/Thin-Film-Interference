@@ -13,7 +13,12 @@ int main(){
 	float incidentAngle = 65*DEGREES;
 	float rayAngles[NUMBER_OF_LAYERS];
 
-	// Calculate transmission angles
+	float freeSpaceWavelength = 500.056; // For unit tests
+	float freeSpaceWaveNumber = 2*M_PI/freeSpaceWavelength;
+
+	float accumulatedPhases[NUMBER_OF_FINITE_LAYERS];
+
+	// Transmission angles
 	rayAngles[0] = incidentAngle;
 	float currentAngle, previousRefractiveIndex, nextRefractiveIndex, sinOfTransmissionAngle;
 	for (int i=1; i<NUMBER_OF_LAYERS;i++) {
