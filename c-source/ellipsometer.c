@@ -29,4 +29,16 @@ int main(){
 		sinOfTransmissionAngle = sin(currentAngle) * previousRefractiveIndex / nextRefractiveIndex;
 		rayAngles[i] = asin(sinOfTransmissionAngle);
 	}
+
+	// Accumulated phase
+	float thickness, refractiveIndex, rayAngle, opticalThickness, opticalPathLength;
+	for (int i=0;i<NUMBER_OF_FINITE_LAYERS;i++) {
+		thickness = LAYER_THICKNESSES[i];
+		refractiveIndex = LAYER_REFRACTIVE_INDICES[i+1];
+		rayAngle = rayAngles[i+1];
+		
+		opticalThickness = thickness*refractiveIndex;
+		opticalPathLength = 2*opticalThickness*cos(rayAngle);
+		accumulatedPhases[i] = freeSpaceWaveNumber*opticalPathLength;
+	}
 }
